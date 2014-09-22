@@ -6,9 +6,9 @@ class HTTPResponseParser
 
   def response_code
 
-    if @http_res =~ /HTTP\/1\.1 200/
+    if @http_res =~ /HTTP\/\d\.\d 200/
       200
-    elsif @http_res =~ /HTTP\/1\.1 301/
+    elsif @http_res =~ /HTTP\/\d\.\d 301/
       301
     end
 
