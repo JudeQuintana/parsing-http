@@ -16,7 +16,8 @@ class HTTPResponseParser
   end
 
   def version
-    @http_res =~ /(HTTP\/\d\.\d)/
+    version = @http_res.split("\n")[0]
+    version =~ /(HTTP\/\d\.\d)/
     $1
   end
 
