@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'parse_response'
 
 describe 'HTTPResponseParser' do
   def read_file(file)
@@ -19,27 +20,22 @@ describe 'HTTPResponseParser' do
     end
 
     it 'should return HTTP version 1.1' do
-      skip
       expect(parse_response('lib/response_200.txt').version).to eq("HTTP/1.1")
     end
 
     it 'should return the body' do
-      skip
       expect(parse_response('lib/response_200.txt').body).to eq("<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"utf-8\" />  <meta name=\"description\" content=\"should i test private methods?\" />  <meta name=\"keywords\" content=\"test,private,methods,oo,object,oriented,tdd\" />  <title>Should I Test Private Methods?</title></head><body>  <div style='font-size: 96px; font-weight: bold; text-align: center; padding-top: 200px; font-family: Verdana, Helvetica, sans-serif'>NO</div>  <!-- Every time you consider testing a private method, your code is telling you that you haven't allocated responsibilities well.  Are you listening to it? --></body></html>")
     end
 
     it 'should return the header' do
-      skip
       expect(parse_response('lib/response_200.txt').header).to eq({"Server:"=>"nginx/1.4.6 (Ubuntu)", "Date:"=>"Tue, 06 May 2014 02:17:16 GMT", "Content-Type:"=>"text/html", "Last-Modified:"=>"Sun, 27 Apr 2014 04:03:41 GMT", "Transfer-Encoding:"=>"chunked", "Connection:"=>"keep-alive", "Content-Encoding:"=>"gzip"})
     end
 
     it 'should return Content-type: text' do
-      skip
       expect(parse_response('lib/response_200.txt').content_type).to eq("text/html")
     end
 
     it 'should return server' do
-      skip
       expect(parse_response('lib/response_200.txt').server).to eq("nginx/1.4.6 (Ubuntu)")
     end
 
@@ -51,12 +47,10 @@ describe 'HTTPResponseParser' do
     end
 
     it 'should return location' do
-      skip
       expect(parse_response('lib/response_301.txt').location).to eq("http://www.pivotaltracker.com/")
     end
 
     it 'should return server' do
-      skip
       expect(parse_response('lib/response_301.txt').server).to eq("nginx/1.6.0")
     end
 
