@@ -6,9 +6,11 @@ class HTTPResponseParser
 
   def response_code
 
-    if @http_res =~ /HTTP\/\d\.\d 200/
+    resp_code = @http_res.split("\n")[0]
+
+    if resp_code =~ /HTTP\/\d\.\d 200 OK/
       200
-    elsif @http_res =~ /HTTP\/\d\.\d 301/
+    elsif resp_code =~ /HTTP\/\d\.\d 301 Moved Permanently/
       301
     end
 
